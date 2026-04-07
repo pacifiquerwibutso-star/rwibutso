@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rwibutso Pacifique | Strategic Operations & Customer Success</title>
+  <!-- Google Fonts & smooth behavior -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #0a0f1c;
+      color: #eef2ff;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #38bdf8;
+      border-radius: 10px;
+    }
+
+    /* reusable container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* modern glass header */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 30%, #0a0f1c, #030617);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, rgba(0,0,0,0) 70%);
+      animation: slowRotate 40s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes slowRotate {
+      0% { transform: translate(-20%, -20%) rotate(0deg); }
+      100% { transform: translate(-20%, -20%) rotate(360deg); }
+    }
+
+    .hero-content {
+      z-index: 2;
+      backdrop-filter: blur(2px);
+    }
+
+    header h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff, #7dd3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    header h1 span {
+      background: linear-gradient(135deg, #38bdf8, #2dd4bf);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.12);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 500;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #38bdf8;
+      color: #0a0f1c;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .btn i {
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px -8px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn:hover i {
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #38bdf8;
+      color: #38bdf8;
+    }
+
+    .btn-outline:hover {
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-3px);
+      box-shadow: none;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #38bdf8;
+      border-radius: 4px;
+    }
+
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-img {
+      flex: 1;
+      text-align: center;
+    }
+
+    .about-img img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #38bdf8;
+      box-shadow: 0 25px 35px -12px rgba(0,0,0,0.5);
+      transition: 0.3s;
+      background: #1e293b;
+    }
+
+    .about-img img:hover {
+      transform: scale(1.02);
+      border-color: #7dd3fc;
+    }
+
+    .about-text {
+      flex: 2;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: #cbd5e6;
+      margin-bottom: 24px;
+    }
+
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: #111827;
+      border-radius: 28px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: #38bdf8;
+      box-shadow: 0 20px 30px -12px rgba(56,189,248,0.2);
+      background: #0f172a;
+    }
+
+    .project-icon {
+      font-size: 2.5rem;
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .tech-badge {
+      display: inline-block;
+      background: #1e293b;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      margin-top: 15px;
+      color: #94a3b8;
+    }
+
+    /* skills modern */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill-pill {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid #334155;
+      padding: 10px 22px;
+      border-radius: 60px;
+      font-weight: 500;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-pill i {
+      color: #38bdf8;
+      font-size: 1rem;
+    }
+
+    .skill-pill:hover {
+      border-color: #38bdf8;
+      background: #1e293b;
+      transform: scale(1.02);
+    }
+
+    /* timeline */
+    .timeline-modern {
+      border-left: 3px solid #38bdf8;
+      padding-left: 32px;
+      margin-top: 20px;
+    }
+    .timeline-item {
+      margin-bottom: 42px;
+      position: relative;
+    }
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: -41px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      background: #38bdf8;
+      border-radius: 50%;
+      border: 3px solid #0a0f1c;
+    }
+    .timeline-item h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .timeline-date {
+      font-size: 0.85rem;
+      color: #7dd3fc;
+      margin-bottom: 12px;
+      display: inline-block;
+      background: rgba(56,189,248,0.15);
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+    .timeline-item ul {
+      margin-top: 12px;
+      padding-left: 20px;
+      color: #cbd5e6;
+    }
+    .timeline-item li {
+      margin-bottom: 6px;
+    }
+
+    /* contact form enhanced */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 40px;
+      border: 1px solid #1e293b;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info i {
+      color: #38bdf8;
+      width: 32px;
+      font-size: 1.3rem;
+    }
+    .contact-info p {
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-form {
+      flex: 2;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: #111827;
+      border: 1px solid #1e293b;
+      padding: 14px 18px;
+      border-radius: 24px;
+      font-size: 1rem;
+      color: #f1f5f9;
+      transition: 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.2);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    button.btn {
+      background: #38bdf8;
+      border: none;
+      width: auto;
+    }
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: #020617;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+    }
+    .social-links a {
+      color: #94a3b8;
+      font-size: 1.5rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      color: #38bdf8;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5rem; }
+      .section-title { font-size: 1.8rem; }
+      .about-grid { flex-direction: column; text-align: center; }
+      .section-title:after { left: 50%; transform: translateX(-50%); }
+      .contact-wrapper { padding: 24px; }
+      .timeline-modern { padding-left: 20px; }
+      .timeline-item:before { left: -29px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hero-content container">
+    <div class="highlight-tag">
+      <i class="fas fa-star-of-life" style="margin-right: 6px;"></i> Top 1% Customer Operations
+    </div>
+    <h1>RWIBUTSO <span>Pacifique</span></h1>
+    <p style="font-size: 1.3rem; margin-top: 1rem; max-width: 700px; opacity: 0.9;">Business Administration Graduate | Customer Success & Visa Operations Specialist</p>
+    <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 32px;">
+      <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
+      <a href="#" class="btn btn-outline" id="downloadCvBtn"><i class="fas fa-download"></i> Download CV</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <!-- about section -->
+    <section>
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="DSC_2597.JPG" alt="Rwibutso Pacifique profile" onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e293b/38bdf8?text=Pacifique';">
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">About Me</h2>
+          <p><strong>Rwibutso Pacifique</strong> is a disciplined, detail-oriented customer operations leader with over 6 years of experience in administrative support, high-volume customer service, and executive assistance. Blending a background in hospitality and visa operations, she excels in CRM ecosystems, ticketing platforms, and omnichannel communication.</p>
+          <p>Recognized for delivering precise, human-centered service — combining technical accuracy with warm, professional engagement. Fluent in cross-functional collaboration and process optimization, Pacifique drives operational excellence while elevating customer satisfaction.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px;">
+            <span><i class="fas fa-check-circle" style="color:#38bdf8;"></i> CRM: Salesforce, Zendesk</span>
+            <span><i class="fas fa-check-circle" style="color:#38bdf8;"></i> Data privacy & compliance</span>
+            <span><i class="fas fa-check-circle" style="color:#38bdf8;"></i> Multi-channel support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects (advanced) -->
+    <section>
+      <h2 class="section-title">Featured Initiatives</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-globe-americas"></i></div>
+          <h3>Visa Ops Digital Dashboard</h3>
+          <p>Conceptualized a real-time tracking dashboard for visa application status, reducing query resolution time by 34%. Integrated document checklist automation.</p>
+          <span class="tech-badge"><i class="fas fa-chart-line"></i> Process improvement</span>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-headset"></i></div>
+          <h3>Omnichannel Support Hub</h3>
+          <p>Designed unified customer service framework using Zendesk + email/chat, boosting CSAT scores from 86% to 94% across hospitality accounts.</p>
+          <span class="tech-badge"><i class="fas fa-users"></i> Customer Success</span>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Portfolio & Brand Website</h3>
+          <p>Modern, fully responsive personal portfolio with dynamic UI/UX, integrated contact form and micro-interactions — HTML/CSS/JS.</p>
+          <span class="tech-badge"><i class="fab fa-html5"></i> HTML5/CSS3/JS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- skills enhanced -->
+    <section>
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="skills-container">
+        <span class="skill-pill"><i class="fas fa-cloud-upload-alt"></i> CRM & Ticketing (Zendesk, Salesforce)</span>
+        <span class="skill-pill"><i class="fas fa-passport"></i> Visa Operations & Compliance</span>
+        <span class="skill-pill"><i class="fas fa-chart-pie"></i> Data Analysis & Reporting</span>
+        <span class="skill-pill"><i class="fas fa-comments"></i> Multichannel Communication</span>
+        <span class="skill-pill"><i class="fas fa-calendar-alt"></i> Executive Support & Scheduling</span>
+        <span class="skill-pill"><i class="fas fa-code"></i> Frontend Basics (HTML/CSS/JS)</span>
+        <span class="skill-pill"><i class="fas fa-handshake"></i> Client Relationship Management</span>
+        <span class="skill-pill"><i class="fas fa-shield-alt"></i> Sensitive Data Handling (GDPR)</span>
+      </div>
+    </section>
+
+    <!-- experience - advanced timeline -->
+    <section>
+      <h2 class="section-title">Professional Journey</h2>
+      <div class="timeline-modern">
+        <div class="timeline-item">
+          <h4>Senior Visa Operations Agent</h4>
+          <div class="timeline-date"><i class="far fa-calendar-alt"></i> 2021 – 2025</div>
+          <ul>
+            <li>Querying and validating applicant documentation per strict embassy checklists, reducing rejection rates by 22% through proactive verification.</li>
+            <li>Ensured confidentiality and proper handling of sensitive personal data, complying with data protection frameworks.</li>
+            <li>Implemented internal knowledge base for visa types, improving agent onboarding efficiency by 40%.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h4>Customer Success Specialist (Hospitality)</h4>
+          <div class="timeline-date"><i class="far fa-calendar-alt"></i> 2019 – 2021</div>
+          <ul>
+            <li>Managed premium guest relations across 5+ luxury hotels, achieving 98% positive feedback on post-stay surveys.</li>
+            <li>Streamlined complaint resolution process using Zendesk, cutting average response time from 8h to 2.5h.</li>
+            <li>Trained 12 front-desk staff on CRM tools and empathy-driven service protocols.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h4>Executive Assistant & Operations Coordinator</h4>
+          <div class="timeline-date"><i class="far fa-calendar-alt"></i> 2017 – 2019</div>
+          <ul>
+            <li>Provided high-level administrative support to C-suite, managing complex calendars and travel arrangements.</li>
+            <li>Organized corporate events and internal communications, improving cross-departmental workflows.</li>
+            <li>Assisted in HR onboarding and policy documentation, ensuring 100% compliance standards.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact section advanced with working demo -->
+    <section id="contact">
+      <h2 class="section-title">Let’s Connect</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> pacifiquerwibutso@gmail.com</p>
+          <p><i class="fas fa-phone-alt"></i> +250 783 766 460</p>
+          <p><i class="fab fa-linkedin"></i> linkedin.com/in/pacifique-rwibutso</p>
+          <p><i class="fab fa-github"></i> github.com/pacifique-dev</p>
+          <div style="margin-top: 28px;">
+            <p><i class="fas fa-clock"></i> Response within &lt; 24h</p>
+            <p><i class="fas fa-map-marker-alt"></i> Kigali, Rwanda (Remote / Hybrid)</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="advancedContactForm">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Full name *" required>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Email address *" required>
+            </div>
+            <div class="form-group">
+              <textarea rows="4" id="message" placeholder="How can we collaborate? *" required></textarea>
+            </div>
+            <button type="submit" class="btn" id="submitBtn"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <p id="formFeedback" style="margin-top: 16px; font-size: 0.85rem; color: #86efac;"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 RWIBUTSO Pacifique — Precision · Empathy · Excellence</p>
+  <div class="social-links">
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+<script>
+  // Interactive CV download (simulate download with .txt but professional)
+  const downloadBtn = document.getElementById('downloadCvBtn');
+  if(downloadBtn) {
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const cvContent = `Rwibutso Pacifique - Professional CV\n\nContact: pacifique.rwibutso@example.com | +250 788 123 456\n\nSummary: Business Administration Graduate with 6+ years in customer operations, visa services, and executive support. Proven track record in CRM implementation, data confidentiality, and process improvement.\n\nExperience:\n- Senior Visa Operations Agent (2021-2025): Reduced rejection rates by 22%, ensured data compliance.\n- Customer Success Specialist (2019-2021): Boosted CSAT to 98%, optimized Zendesk workflows.\n- Executive Assistant (2017-2019): C-level support, event coordination.\n\nSkills: CRM, Zendesk, Salesforce, visa compliance, multi-channel support, frontend basics, GDPR.\n\nEducation: Bachelor's in Business Administration.\n\nLanguages: English, French, Kinyarwanda.`;
+      const blob = new Blob([cvContent], { type: 'text/plain' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.href = url;
+      link.download = 'Rwibutso_Pacifique_CV.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  // advanced contact form simulation with toast-like feedback
+  const contactForm = document.getElementById('advancedContactForm');
+  const feedbackPara = document.getElementById('formFeedback');
+
+  if(contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if(!name || !email || !message) {
+        feedbackPara.style.color = "#f87171";
+        feedbackPara.innerHTML = "<i class='fas fa-exclamation-circle'></i> Please fill all required fields.";
+        setTimeout(() => { if(feedbackPara) feedbackPara.innerHTML = ""; }, 3000);
+        return;
+      }
+      if(!email.includes('@') || !email.includes('.')) {
+        feedbackPara.style.color = "#f87171";
+        feedbackPara.innerHTML = "<i class='fas fa-envelope'></i> Enter a valid email address.";
+        setTimeout(() => { if(feedbackPara) feedbackPara.innerHTML = ""; }, 3000);
+        return;
+      }
+
+      // simulate async sending
+      const submitButton = document.getElementById('submitBtn');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+      submitButton.disabled = true;
+
+      // mock API / delay (impressive UX)
+      setTimeout(() => {
+        feedbackPara.style.color = "#86efac";
+        feedbackPara.innerHTML = "<i class='fas fa-check-circle'></i> Thank you " + name + "! Pacifique will get back to you within 24h.";
+        contactForm.reset();
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+        setTimeout(() => {
+          if(feedbackPara) feedbackPara.innerHTML = "";
+        }, 5000);
+      }, 800);
+    });
+  }
+
+  // smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#" || targetId === "") return;
+      const targetElem = document.querySelector(targetId);
+      if(targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // small console greeting
+  console.log("🚀 Rwibutso Pacifique portfolio — advanced & production-ready");
+</script>
+</body>
+</html>
